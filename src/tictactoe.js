@@ -7,22 +7,30 @@ export class TicTacToe {
         ]
         this.turn = turn
         this.state = "playing"
+        this.trunsLeft = 9
     }
-    handleClick(squareElement) {
+    handleClick(squareElement,textElement) {
         const id = squareElement.id.split(" ")
-        if (!this.board[id[0]][id[1]]) {
+
+        if (!this.board[id[0]][id[1]] && this.state === "playing") {
             this.board[id[0]][id[1]] = this.turn
             squareElement.textContent = this.turn
             this.changeTurns()
-            //console.table(this.board)
-            console.log(this.checkWin())
+
+            const state = this.checkWin()
+            this.state = state
+            this.changeState(textElement)
+            console.log(this.trunsLeft)
+            console.log(this.state)
         }
     }
     changeTurns() {
         if (this.turn === "x") {
             this.turn = "o"
+            this.trunsLeft--
         } else if (this.turn === "o") {
             this.turn = "x"
+            this.trunsLeft--
         }
     }
     checkWin() {
@@ -49,68 +57,55 @@ export class TicTacToe {
        oWin = winPatterns.pattern1.every(element => element === "o")
        
        if(xWin){
-           this.state = "x-win"
-           return this.state
+           return this.state = "x-win"
        }else if(oWin){
-            this.state = "o-win"
-           return this.state
+           return this.state = "o-win"
        }
 
        xWin = winPatterns.pattern2.every(element => element === "x")
        oWin = winPatterns.pattern2.every(element => element === "o")
 
        if(xWin){
-        this.state = "x-win"
-        return this.state
+        return this.state = "x-win"
     }else if(oWin){
-         this.state = "o-win"
-        return this.state
+        return this.state = "o-win"
     }
 
        xWin = winPatterns.pattern3.every(element => element === "x")
        oWin = winPatterns.pattern3.every(element => element === "o")
 
        if(xWin){
-           this.state = "x-win"
-           return this.state
-       }else if(oWin){
-            this.state = "o-win"
-           return this.state
-       }
+        return this.state = "x-win"
+    }else if(oWin){
+        return this.state = "o-win"
+    }
 
        xWin = winPatterns.pattern4.every(element => element === "x")
        oWin = winPatterns.pattern4.every(element => element === "o")
 
        if(xWin){
-           this.state = "x-win"
-           return this.state
+           return this.state = "x-win"
        }else if(oWin){
-            this.state = "o-win"
-           return this.state
+           return this.state = "o-win"
        }
-       
 
        xWin = winPatterns.pattern5.every(element => element === "x")
        oWin = winPatterns.pattern5.every(element => element === "o")
 
        if(xWin){
-        this.state = "x-win"
-        return this.state
-    }else if(oWin){
-         this.state = "o-win"
-        return this.state
-    }
+           return this.state = "x-win"
+       }else if(oWin){
+           return this.state = "o-win"
+       }
     
 
        xWin = winPatterns.pattern6.every(element => element === "x")
        oWin = winPatterns.pattern6.every(element => element === "o")
 
        if(xWin){
-        this.state = "x-win"
-        return this.state
+        return this.state = "x-win"
     }else if(oWin){
-         this.state = "o-win"
-        return this.state
+        return this.state = "o-win"
     }
     
 
@@ -118,11 +113,9 @@ export class TicTacToe {
        oWin = winPatterns.pattern7.every(element => element === "o")
 
        if(xWin){
-        this.state = "x-win"
-        return this.state
+        return this.state = "x-win"
     }else if(oWin){
-         this.state = "o-win"
-        return this.state
+        return this.state = "o-win"
     }
     
 
@@ -130,14 +123,33 @@ export class TicTacToe {
        oWin = winPatterns.pattern8.every(element => element === "o")
 
        if(xWin){
-        this.state = "x-win"
-        return this.state
-    }else if(oWin){
-         this.state = "o-win"
-        return this.state
-    }
+           return this.state = "x-win"
+       }else if(oWin){
+           return this.state = "o-win"
+       }
     
-
-
+    if(!xWin && !oWin && this.trunsLeft <= 0){
+        return this.state = "tie"
+    }else if(!xWin && !oWin){
+        return this.state = "playing"
     }
+
+}
+    changeState(textElement){
+        if(this.state === "playing"){
+            if(this.turn === "x"){
+                textElement.textContent = "X turn"
+            }else if(this.turn === "o"){
+                textElement.textContent = "O turn"
+            }
+        }else{
+            if(this.state === "x-win"){
+                textElement.textContent = "X wins!!"
+            }else if(this.state === "o-win"){
+                textElement.textContent = "O wins!!"
+            }else if(this.state === "tie"){
+                textElement.textContent = "Tie! Nobody wins"
+            }
+        }
+}
 }
