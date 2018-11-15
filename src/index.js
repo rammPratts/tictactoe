@@ -2,14 +2,25 @@ import { TicTacToe } from "./tictactoe"
 
 const boardSquares = document.querySelectorAll(".board-square")
 const stateElement = document.querySelector("#state-text")
-const game = new TicTacToe("x")
+const restartButton = document.querySelector("#restart-game")
 
-stateElement.textContent = `${game.turn.toUpperCase()} turn`
+const startGame = () => {
+    const game = new TicTacToe("x")
 
-boardSquares.forEach(square => {
-    square.addEventListener("click", e => {
-        e.preventDefault()
-        game.handleClick(e.target,stateElement)
+    stateElement.textContent = `${game.turn.toUpperCase()} turn`
+    
+    boardSquares.forEach(square => {
+        square.textContent = ""
+        square.addEventListener("click", e => {
+            e.preventDefault()
+            game.handleClick(e.target,stateElement)
+        })
     })
+}
+startGame()
+
+restartButton.addEventListener("click", e => {
+    e.preventDefault()
+    startGame()
 })
 
