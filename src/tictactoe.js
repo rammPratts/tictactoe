@@ -36,103 +36,41 @@ export class TicTacToe {
     checkWin() {
         let xWin = false
         let oWin = false
-        const winPatterns = {
+        const winPatterns = [
             //horizontales
-            pattern1: [this.board[0][0], this.board[0][1], this.board[0][2]],
-            pattern2: [this.board[1][0], this.board[1][1], this.board[1][2]],
-            pattern3: [this.board[2][0], this.board[2][1], this.board[2][2]],
+            [this.board[0][0], this.board[0][1], this.board[0][2]],
+            [this.board[1][0], this.board[1][1], this.board[1][2]],
+            [this.board[2][0], this.board[2][1], this.board[2][2]],
             //verticales
-            pattern4: [this.board[0][0], this.board[1][0], this.board[2][0]],
-            pattern5: [this.board[0][1], this.board[1][1], this.board[2][1]],
-            pattern6: [this.board[0][2], this.board[1][2], this.board[2][2]],
+            [this.board[0][0], this.board[1][0], this.board[2][0]],
+            [this.board[0][1], this.board[1][1], this.board[2][1]],
+            [this.board[0][2], this.board[1][2], this.board[2][2]],
             //diagonales
-            pattern7: [this.board[0][0], this.board[1][1], this.board[2][2]],
-            pattern8: [this.board[0][2], this.board[1][1], this.board[2][0]],
+            [this.board[0][0], this.board[1][1], this.board[2][2]],
+            [this.board[0][2], this.board[1][1], this.board[2][0]],
 
-        }
+        ]
 
     //Check patterns
-    // This code can be optimized a lot. Just wanted to make a solution for now. Will be omptimized :)
-       xWin = winPatterns.pattern1.every(element => element === "x")
-       oWin = winPatterns.pattern1.every(element => element === "o")
-       
-       if(xWin){
-           return this.state = "x-win"
-       }else if(oWin){
-           return this.state = "o-win"
-       }
 
-       xWin = winPatterns.pattern2.every(element => element === "x")
-       oWin = winPatterns.pattern2.every(element => element === "o")
+        for(let index in winPatterns){
+            xWin = winPatterns[index].every(element => element === "x")
+            oWin = winPatterns[index].every(element => element === "o")
+            
+                   
+            if(xWin){
+                return this.state = "x-win"
+            }else if(oWin){
+                return this.state = "o-win"
+            }
+        }
 
-       if(xWin){
-        return this.state = "x-win"
-    }else if(oWin){
-        return this.state = "o-win"
-    }
-
-       xWin = winPatterns.pattern3.every(element => element === "x")
-       oWin = winPatterns.pattern3.every(element => element === "o")
-
-       if(xWin){
-        return this.state = "x-win"
-    }else if(oWin){
-        return this.state = "o-win"
-    }
-
-       xWin = winPatterns.pattern4.every(element => element === "x")
-       oWin = winPatterns.pattern4.every(element => element === "o")
-
-       if(xWin){
-           return this.state = "x-win"
-       }else if(oWin){
-           return this.state = "o-win"
-       }
-
-       xWin = winPatterns.pattern5.every(element => element === "x")
-       oWin = winPatterns.pattern5.every(element => element === "o")
-
-       if(xWin){
-           return this.state = "x-win"
-       }else if(oWin){
-           return this.state = "o-win"
-       }
+        if(!xWin && !oWin && this.trunsLeft <= 0){
+            return this.state = "tie"
+        }else if(!xWin && !oWin){
+            return this.state = "playing"
+        }
     
-
-       xWin = winPatterns.pattern6.every(element => element === "x")
-       oWin = winPatterns.pattern6.every(element => element === "o")
-
-       if(xWin){
-        return this.state = "x-win"
-    }else if(oWin){
-        return this.state = "o-win"
-    }
-    
-
-       xWin = winPatterns.pattern7.every(element => element === "x")
-       oWin = winPatterns.pattern7.every(element => element === "o")
-
-       if(xWin){
-        return this.state = "x-win"
-    }else if(oWin){
-        return this.state = "o-win"
-    }
-    
-
-       xWin = winPatterns.pattern8.every(element => element === "x")
-       oWin = winPatterns.pattern8.every(element => element === "o")
-
-       if(xWin){
-           return this.state = "x-win"
-       }else if(oWin){
-           return this.state = "o-win"
-       }
-    
-    if(!xWin && !oWin && this.trunsLeft <= 0){
-        return this.state = "tie"
-    }else if(!xWin && !oWin){
-        return this.state = "playing"
-    }
 
 }
     changeState(textElement){
