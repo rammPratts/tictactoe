@@ -14,7 +14,8 @@ export class TicTacToe {
 
         if (!this.board[id[0]][id[1]] && this.state === "playing") {
             this.board[id[0]][id[1]] = this.turn
-            /*---------PROVISIONAL (changes board text)---------*/ squareElement.textContent = this.turn
+            // /*---------PROVISIONAL (changes board text)---------*/ squareElement.textContent = this.turn
+            this.turn === "x" ? squareElement.classList.add("squareX") : squareElement.classList.add("squareO")
             this.changeTurns()
 
             const state = this.checkWin()

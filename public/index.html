@@ -3,36 +3,45 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <title>Tic Tac Toe</title>
 </head>
 
 <body>
+    <div class="github">
+        <a href="https://github.com/rammPratts/tictactoe" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
     <div class="container">
         <h3 id="state-text">Text</h3>
         <button id="restart-game">Restart</button>
         <table id="board">
             <tr>
-                <td class="board-square" id="0 0">0 0</td>
-                <td class="board-square" id="0 1">0 1</td>
-                <td class="board-square" id="0 2">0 2</td>
+                <td class="board-square" id="0 0">
+                </td>
+                <td class="board-square" id="0 1"></td>
+                <td class="board-square" id="0 2"></td>
             </tr>
             <tr>
-                <td class="board-square" id="1 0">1 0</td>
-                <td class="board-square" id="1 1">1 1</td>
-                <td class="board-square" id="1 2">1 2</td>
+                <td class="board-square" id="1 0"></td>
+                <td class="board-square" id="1 1"></td>
+                <td class="board-square" id="1 2"></td>
             </tr>
             <tr>
-                <td class="board-square" id="2 0">2 0</td>
-                <td class="board-square" id="2 1">2 1</td>
-                <td class="board-square" id="2 2">2 2</td>
+                <td class="board-square" id="2 0"></td>
+                <td class="board-square" id="2 1"></td>
+                <td class="board-square" id="2 2"></td>
             </tr>
         </table>
-
     </div>
 
+    <footer>
+        <p><i class="fas fa-gamepad"></i> Game made by Ramiro Meneses</p>
+        <p><i class="far fa-envelope"></i> Contact: <a href="mailto:rampratts@gmail.com">rampratts@gmail.com</a></p>
+    </footer>
 
 
     <script src="scripts/bundle.js"></script>
